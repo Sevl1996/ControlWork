@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="col-md-6 col-md-offset-3">
+        <h2>All users</h2>
+        <table class="table table-responsive table-condensed table-hover table-bordered">
+            <thead style="font-weight: bolder;">
+
+            <td>Username</td>
+            <td>Password</td>
+            <td>Email</td>
+            <td>Actions</td>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                    <tr id="{{ user.id }}">
+
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.password}}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="/user/editUser/{{ user.id }}" class="btn btn-primary">Edit</a>
+                            <a href="/user/infoUser/{{ user.id }}" class="btn btn-info">Info</a>
+                            <a href="/user/deleteUser/{{ user.id }}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="/user/addUser" class="btn btn-success">Add user</a>
+        <a href="/" class="btn btn-warning">Back</a>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}
